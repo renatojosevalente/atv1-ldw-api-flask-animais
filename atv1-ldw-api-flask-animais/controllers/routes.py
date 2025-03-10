@@ -33,10 +33,18 @@ def init_app(app):
 
         return render_template('cadanimals.html', animallist=animallist)
     
-    @app.route('/apianimals' , methods=['GET', 'POST'])
+
+    @app.route('/apianimals', methods=['GET', 'POST'])
     def apianimals():
-        url = 'https://dogapi.dog/api-docs/v2/swagger.json'
+        url = 'https://dog.ceo/api/breed/hound/images'
         res = urllib.request.urlopen(url)
         data = res.read()
-        animalsjson = json.Loads(data)
-        return render_template('apianimals.html', animalsjson=animalsjson)
+        animalsjson = json.loads(data)  # Correção aqui
+
+        # Como o JSON retorna uma chave "message" com a lista de imagens, pegamos apenas essa parte
+        images = [{"image_url": img} for img in animalsjson["message"]]
+
+        return render_template('apianimals.html', animalsjson=images)
+
+
+
