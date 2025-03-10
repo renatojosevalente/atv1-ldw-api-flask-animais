@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animais</title>
+</head>
+<body>
+   <header>
+        <h1 style="text-align: center;">Página de Animais</h1>
+        <hr>
+   </header>
+    {% block content %}
+        <div class="container" style="background-color: #f0f0f0; border-radius: 8px">
+            <div class="row">
+                {% for a in animalsjson %}
+                    <div class="col-md-3 m-auto">
+                        <div class="card" style="width: 16rem;">
+                            <img src="{{g.thumbnail}}">
+                            <div class="card-body">
+                                <h5>{{a.name}}</h5>
+                                <p>{{a.genre}}</p>
+                                <p>{{a.platform}}</p>
+                                <a href="#" class="btn btn-dark">+ Info</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+            </div>
+        </div>
+    {% endblock content %}
+   <footer>
+        <hr>
+        <p style="text-align: center;">Todos os direitos reservados &reg;</p>
+   </footer>
+</body>
+</html>

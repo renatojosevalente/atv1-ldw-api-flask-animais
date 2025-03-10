@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animais</title>
+</head>
+<body>
+    {#comentário em jinja2#}
+
+    {% extends 'base.html' %}
+    {% block content %}
+    <h2>Esta página tem uma lista de animais.</h2>
+    <hr>
+    <p><strong>Lista de animais</strong></p>
+    
+    {% for k, v in animal.items() %}
+        <details>
+            <summary>{{k}}</summary>
+            <p>{{v}}</p>
+        </details>
+    {% endfor %}
+    {% endblock content %}
+
+
+            <hr>
+            <h4>Novo animal</h4>
+            <form action="{{url_for('animals')}}", method="POST">
+                <label for="comprador">Comprador:</label>
+                <input type="text" name="comprador">
+                <input type="submit" value="Inserir">
+            </form>
+            <br>
+            
+</body>
+</html>
