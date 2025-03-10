@@ -1,17 +1,23 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
-    {% extends 'base.html' %}
-    {% block content %}
-    <h2>Esta página é a HOMEPAGE.</h2>
- 
-    {% endblock content %}
-  
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container text-center">
+        <h2 class="mt-4">Bem-vindo à Homepage!</h2>
+        <p>Veja abaixo algumas imagens de cães obtidas via API.</p>
+        
+        <div class="row">
+            {% for a in animalsjson %}
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <img src="{{ a.image_url }}" class="card-img-top" alt="Imagem de um cão">
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}
+
+<footer class="text-center mt-4">
     <hr>
-</body>
-</html>
+    <p>Todos os direitos reservados &reg;</p>
+</footer>
